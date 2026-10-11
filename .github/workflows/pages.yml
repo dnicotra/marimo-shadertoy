@@ -23,8 +23,9 @@ jobs:
           python-version: "3.12"
 
       # The WASM export embeds this marimo version, so keep it pinned to a tested one.
+      # uv is required by `marimo export html-wasm` for notebooks with a PEP 723 header.
       - name: Install dependencies
-        run: pip install "marimo==0.25.1" anywidget numpy pytest
+        run: pip install "marimo==0.25.1" anywidget numpy pytest uv
 
       - name: Check notebook
         run: marimo check shadertoy.py
